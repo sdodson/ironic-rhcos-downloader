@@ -6,7 +6,7 @@ COPY clearproxy.go clearproxy.go
 COPY go.mod go.mod
 RUN go build -o /go/bin/clearproxy clearproxy.go
 
-FROM registry.ci.openshift.org/ocp/4.21:base-rhel9
+FROM registry.ci.openshift.org/ocp/4.21:base-rhel9-minimal-test
 COPY --from=builder /go/bin/clearproxy /usr/local/bin/clearproxy
 
 RUN dnf upgrade -y \
